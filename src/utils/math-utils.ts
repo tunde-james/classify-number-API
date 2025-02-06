@@ -44,14 +44,14 @@ const checkPerfect = (num: number): boolean => {
 };
 
 const checkArmstrong = (num: number): boolean => {
-  if (num < 0) return false;
-  const digits = String(num).split('');
+  const absoluteNum = Math.abs(num);
+  const digits = String(absoluteNum).split('');
   const sum = digits.reduce(
     (acc, digit) => acc + Math.pow(Number(digit), digits.length),
     0
   );
 
-  return sum === num;
+  return sum === absoluteNum;
 };
 
 const calculateDigitSum = (num: number): number => {
