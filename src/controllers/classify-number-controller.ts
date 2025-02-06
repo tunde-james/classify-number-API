@@ -22,7 +22,7 @@ const getClassifyNumber = async (req: Request, res: Response) => {
       is_perfect: properties.isPerfect,
       properties: properties.properties,
       digit_sum: properties.digitSum,
-      funFact: funFact,
+      fun_fact: funFact,
     });
   } catch (error) {
     console.log(error);
