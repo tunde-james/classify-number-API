@@ -4,14 +4,17 @@ import axios from 'axios';
 import { classifyNumber } from '../utils/math-utils';
 
 const getClassifyNumber = async (req: Request, res: Response) => {
-  const number = parseInt(req.query.number as string);
+  const inputNumber = req.query.number as string;
 
-  if (isNaN(number)) {
+  if (!inputNumber || !/^-?\d+$/.test(inputNumber)) {
     return res.status(400).json({
-      number: req.query.number,
+      number: inputNumber,
       error: true,
+      message: 'Invalid input. Please provide a valid integer.',
     });
   }
+
+  const number = parseInt(inputNumber, 10);
 
   try {
     const properties = classifyNumber(number);
@@ -27,7 +30,10 @@ const getClassifyNumber = async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: 'Something went wrong' });
+    res.status(500).json({
+      error: true,
+      message: error instanceof Error ? error.message : 'Internal Server Error',
+    });
   }
 };
 
@@ -39,7 +45,9 @@ const fetchFunFact = async (num: number): Promise<string> => {
   const url = `http://numbersapi.com/${num}/math`;
 
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(url, {
+      timeout: 5000,
+    });
     return response.data;
   } catch (error) {
     throw new Error('Failed to fetch fun fact');
