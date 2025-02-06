@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import axios from 'axios';
 
 import { classifyNumber } from '../utils/math-utils';
 
@@ -37,10 +38,10 @@ export default {
 const fetchFunFact = async (num: number): Promise<string> => {
   const url = `http://numbersapi.com/${num}/math`;
 
-  const response = await fetch(url);
-  if (!response.ok) {
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
     throw new Error('Failed to fetch fun fact');
   }
-
-  return response.text();
 };
