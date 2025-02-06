@@ -50,7 +50,7 @@ This API classifies a given number and returns interesting mathematical properti
    ```
 
 ## Deployment on Render
-The API is deployed on Render and is publicly accessible at https://tj-classify-number-api.onrender.com. You can test it by sending a GET request to the [https://number-classifier-api-nmkh.onrender.com/api/classify-number] endpoint.
+The API is deployed on Render and is publicly accessible at https://tj-classify-number-api.onrender.com. You can test it by sending a GET request to the https://tj-classify-number-api.onrender.com/api/classify-number endpoint.
 
 **Example Request:**
 ```bash
