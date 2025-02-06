@@ -93,8 +93,8 @@ curl -X GET https://tj-classify-number-api.onrender.com/api/classify-number?numb
 **Error Handling**
 - **400 Bad Request:** Returned if the input is not a valid integer.
 
-**Contributing**
+## Contributing
 Feel free to contribute to this project by opening issues or submitting pull requests.
 
-**License**
+## License**
 This project is licensed under the MIT License.
