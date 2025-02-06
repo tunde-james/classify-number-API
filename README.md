@@ -96,5 +96,5 @@ curl -X GET https://tj-classify-number-api.onrender.com/api/classify-number?numb
 ## Contributing
 Feel free to contribute to this project by opening issues or submitting pull requests.
 
-## License**
+## License
 This project is licensed under the MIT License.
