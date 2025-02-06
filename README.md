@@ -1,8 +1,25 @@
-# Fun Fact & Classify Number API
+# Number Classification API
 
-This API classifies a number and returns its mathematical properties along with a fun fact.
+This API classifies a given number and returns interesting mathematical properties along with a fun fact about the number.
 
-## Setup Instructions
+## Endpoints
+
+**Base URL:** `https://<your-domain.com>/api`
+
+**Method:** `GET`
+
+**Description:** Classifies a number and returns its mathematical properties and a fun fact.
+
+**Parameters:**
+
+- `number` (query parameter): The number to classify.
+
+**Responses:**
+
+- **200 OK:** Returns a JSON object with the number and its properties.
+- **400 Bad Request:** Returns an error if the input is not a valid number.
+
+## Local Setup
 
 1. Clone the repository:
 
@@ -32,31 +49,52 @@ This API classifies a number and returns its mathematical properties along with 
    pnpm run start
    ```
 
-## API Documentation
+## Deployment on Render
+The API is deployed on Render and is publicly accessible at https://tj-classify-number-api.onrender.com. You can test it by sending a GET request to the [https://number-classifier-api-nmkh.onrender.com/api/classify-number] endpoint.
 
-1. Get User Information
+**Example Request:**
+```bash
+curl -X GET https://tj-classify-number-api.onrender.com/api/classify-number?number=371
+```
 
-   Endpoint: [`GET /api/classify-number?number=<number>`](http://localhost:3000/api/classify-number?number=371)
-   Method: GET
+## Example Response (200 OK):
 
-2. Response
-   The API returns the following JSON response:
+```json
+{
+  "number": 371,
+  "is_prime": false,
+  "is_perfect": false,
+  "properties": ["armstrong", "odd"],
+  "digit_sum": 11,
+  "fun_fact": "371 is an Armstrong number because 3^3 + 7^3 + 1^3 = 371"
+}
+```
 
-   ```json
-   {
-     "number": 371,
-     "is_prime": false,
-     "is_perfect": false,
-     "properties": ["armstrong", "odd"],
-     "digit_sum": 11,
-     "fun_fact": "371 is an Armstrong number because 3^3 + 7^3 + 1^3 = 371"
-   }
-   ```
+## Example Response (400 Bad Request):
 
-3. Example Usage
-   You can test the API using curl or any API client:
+```json
+{
+  "number": "alphabet",
+  "error": true
+}
+```
 
-   ```bash
-   curl http://localhost:7000/api/classify-number?number=371
+**Possible Properties**
+- **prime:** The number is prime.
 
-   ```
+- **perfect:** The number is a perfect number.
+
+- **armstrong:** The number is an Armstrong number.
+
+- **odd:** The number is odd.
+
+- **even:** The number is even.
+
+**Error Handling**
+- **400 Bad Request:** Returned if the input is not a valid integer.
+
+**Contributing**
+Feel free to contribute to this project by opening issues or submitting pull requests.
+
+**License**
+This project is licensed under the MIT License.
