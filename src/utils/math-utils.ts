@@ -44,6 +44,7 @@ const checkPerfect = (num: number): boolean => {
 };
 
 const checkArmstrong = (num: number): boolean => {
+  if (num < 0) return false;
   const digits = String(num).split('');
   const sum = digits.reduce(
     (acc, digit) => acc + Math.pow(Number(digit), digits.length),
@@ -54,7 +55,8 @@ const checkArmstrong = (num: number): boolean => {
 };
 
 const calculateDigitSum = (num: number): number => {
-  return String(num)
+  const absoluteNum = Math.abs(num);
+  return String(absoluteNum)
     .split('')
     .reduce((acc, digit) => acc + Number(digit), 0);
 };
